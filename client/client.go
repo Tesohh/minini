@@ -31,5 +31,5 @@ func (c *Client) Send(m message.Msg) error {
 }
 
 func (c *Client) Error(err error) {
-	c.Send(message.Msg{Data: map[string]any{"error": err.Error()}})
+	c.Send(message.Msg{Action: "error", Data: map[string]any{"error": err.Error()}})
 }
