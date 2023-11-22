@@ -3,7 +3,6 @@ package rp
 import (
 	"github.com/Tesohh/minini/data"
 	"github.com/Tesohh/minini/db"
-	"github.com/Tesohh/minini/server"
 )
 
 var Global Repo // HOLDUP: do we do this or nah?
@@ -13,6 +12,6 @@ type StoreHolder struct {
 }
 
 type Repo struct {
-	DB     StoreHolder
-	Server server.Server
+	DB StoreHolder
+	// Server server.Server
 }
