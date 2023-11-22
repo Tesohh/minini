@@ -1,8 +1,6 @@
 package action
 
 import (
-	"fmt"
-
 	"github.com/Tesohh/minini/client"
 	"github.com/Tesohh/minini/data"
 	"github.com/Tesohh/minini/db"
@@ -22,12 +20,14 @@ func signup(c *client.Client, m message.Msg) error {
 		return err
 	}
 
+	if d.Username == "" || d.Password == "" {
+		return ErrFieldEmpty
+	}
+
 	hash, err := bcrypt.GenerateFromPassword([]byte(d.Password), 10)
 	if err != nil {
 		return err
 	}
-
-	fmt.Println(m, d)
 
 	user := data.User{
 		Username: d.Username,
