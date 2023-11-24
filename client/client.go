@@ -8,7 +8,8 @@ import (
 )
 
 type PlayerState struct {
-	X, Y int
+	X int `json:"x"`
+	Y int `json:"y"`
 }
 
 type Client struct {

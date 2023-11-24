@@ -22,3 +22,14 @@ func Data[T any](m Msg) (*T, error) {
 	err = json.Unmarshal(remarsh, &doc)
 	return &doc, err
 }
+
+func DataToJson[T any](data T) (map[string]any, error) {
+	remarsh, err := json.Marshal(data)
+	if err != nil {
+		return nil, err
+	}
+
+	var js map[string]any
+	err = json.Unmarshal(remarsh, &js)
+	return js, err
+}

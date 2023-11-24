@@ -31,7 +31,7 @@ func login(c *client.Client, m message.Msg) error {
 
 	c.Authenticated = true
 	c.PlayerID = dbuser.ID.String()
-	c.State = client.PlayerState{}
+	c.State = dbuser.State
 
 	c.Send(message.Msg{Action: "login.ok", Data: map[string]any{"playerid": c.PlayerID}})
 

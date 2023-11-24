@@ -47,5 +47,7 @@ func signup(c *client.Client, m message.Msg) error {
 	c.PlayerID = dbuser.ID.String()
 	c.State = client.PlayerState{}
 
+	c.Send(message.Msg{Action: "login.ok", Data: map[string]any{"playerid": c.PlayerID}})
+
 	return nil
 }
