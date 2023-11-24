@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/Tesohh/minini/action"
+	"github.com/Tesohh/minini/background"
 	"github.com/Tesohh/minini/data"
 	"github.com/Tesohh/minini/db"
 	"github.com/Tesohh/minini/rp"
@@ -24,5 +25,6 @@ func main() {
 		Users: db.MongoStore[data.User]{Client: dbc, Coll: dbc.Database("main").Collection("users")},
 	}
 
+	go background.SaveUsers(s)
 	s.Start()
 }
