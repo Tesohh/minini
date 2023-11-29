@@ -1,4 +1,4 @@
-package action
+package server
 
 import (
 	"github.com/Tesohh/minini/client"

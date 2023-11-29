@@ -1,6 +1,7 @@
-package action
+package server
 
 import (
+	"github.com/Tesohh/minini/action"
 	"github.com/Tesohh/minini/client"
 	"github.com/Tesohh/minini/data"
 	"github.com/Tesohh/minini/db"
@@ -21,7 +22,7 @@ func signup(c *client.Client, m message.Msg) error {
 	}
 
 	if d.Username == "" || d.Password == "" {
-		return ErrFieldEmpty
+		return action.ErrFieldEmpty
 	}
 
 	hash, err := bcrypt.GenerateFromPassword([]byte(d.Password), 10)

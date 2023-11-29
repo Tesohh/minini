@@ -4,7 +4,6 @@ import (
 	"log/slog"
 	"net"
 
-	"github.com/Tesohh/minini/action"
 	"github.com/Tesohh/minini/client"
 	"github.com/Tesohh/minini/message"
 )
@@ -14,7 +13,7 @@ type Server struct {
 	Ln         net.Listener
 	Quitch     chan struct{}
 	Clients    map[net.Addr]*client.Client
-	Actions    map[string]action.ActionFunc // TODO: Replace with Action
+	Actions    map[string]ActionFunc // TODO: Replace with Action
 }
 
 func NewServer(listenAddr string) *Server {
@@ -22,7 +21,7 @@ func NewServer(listenAddr string) *Server {
 		ListenAddr: listenAddr,
 		Quitch:     make(chan struct{}),
 		Clients:    make(map[net.Addr]*client.Client),
-		Actions:    make(map[string]action.ActionFunc),
+		Actions:    make(map[string]ActionFunc),
 	}
 }
 

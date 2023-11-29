@@ -1,6 +1,7 @@
-package action
+package server
 
 import (
+	"github.com/Tesohh/minini/action"
 	"github.com/Tesohh/minini/client"
 	"github.com/Tesohh/minini/db"
 	"github.com/Tesohh/minini/message"
@@ -21,12 +22,12 @@ func login(c *client.Client, m message.Msg) error {
 
 	dbuser, err := rp.Global.DB.Users.One(db.Query{"username": d.Username})
 	if err != nil {
-		return ErrUserNotFound
+		return action.ErrUserNotFound
 	}
 
 	err = bcrypt.CompareHashAndPassword([]byte(dbuser.Password), []byte(d.Password))
 	if err != nil {
-		return ErrWrongPassword
+		return action.ErrWrongPassword
 	}
 
 	c.Authenticated = true
